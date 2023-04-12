@@ -36,7 +36,6 @@ This setup assumes you have a general understanding of networks and basic linux 
     2. In Kali VM, open terminal and run netdiscover -r 10.0.200.0/24
     3. In Metasploitable VM, run ifconfig - compare the ip to the netdiscover list to confirm.
     
-    ![Screenshot from 2023-04-12 12-48-24.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/20cac6de-34c1-4eb0-be15-56e177f203fd/Screenshot_from_2023-04-12_12-48-24.png)
     
 7. Setup users + passwords
     1. On Kali VM, run nmap -p- -sV -oN MS2.txt {IP of MS2 VM}
